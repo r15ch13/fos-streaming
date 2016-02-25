@@ -45,7 +45,7 @@ RUN sudo chmod 755 /etc/service/nginx/run
 RUN ls -lR /etc/service/
 
 # CronJob
-RUN sudo sh -c 'echo "*/2 * * * * fosstreaming php $FOS_INSTALL_DIR/cron.php" >> /etc/crontab'
+RUN sudo FOS_INSTALL_DIR=$FOS_INSTALL_DIR sh -c 'echo "*/2 * * * * fosstreaming php $FOS_INSTALL_DIR/cron.php" >> /etc/crontab'
 
 VOLUME $FOS_HLS_CACHE
 EXPOSE 80
