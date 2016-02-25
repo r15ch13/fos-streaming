@@ -33,13 +33,15 @@ RUN . $PROVISION_DIR/ffmpeg.sh
 RUN . $PROVISION_DIR/mariadb.sh
 RUN . $PROVISION_DIR/final.sh
 
-
 RUN mkdir -p /etc/service/mysql
 ADD $PROVISION_DIR/config/mysql.sh /etc/service/mysql/run
+RUN sudo chmod 755 /etc/service/mysql/run
 RUN mkdir -p /etc/service/php5-fpm
 ADD $PROVISION_DIR/config/php5-fpm.sh /etc/service/php5-fpm/run
+RUN sudo chmod 755 /etc/service/php5-fpm/run
 RUN mkdir -p /etc/service/nginx
 ADD $PROVISION_DIR/config/nginx.sh /etc/service/nginx/run
+RUN sudo chmod 755 /etc/service/nginx/run
 RUN ls -lR /etc/service/
 
 # CronJob
